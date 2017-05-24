@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 import os, subprocess, sys
-from tasks import *
+from tasks import nslookup, nmap
 
 # Create your views here.
 def url_retrieval(request):

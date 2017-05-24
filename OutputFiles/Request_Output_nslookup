@@ -1,0 +1,8 @@
+Server:		192.168.43.1
+Address:	192.168.43.1#53
+
+Non-authoritative answer:
+www.cyware.com	canonical name = cyware.com.
+Name:	cyware.com
+Address: 52.38.86.51
+
