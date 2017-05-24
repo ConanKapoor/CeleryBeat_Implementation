@@ -1,0 +1,5 @@
+#Bower file to connect frontend files.
+#Author - Shivam Kapoor
+{
+    "directory": "testing/static/"
+}
