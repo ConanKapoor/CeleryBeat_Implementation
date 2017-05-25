@@ -1,7 +1,8 @@
-from celery import shared_task
-import os, sys, subprocess
+from celery import Celery, shared_task
+import os, sys, subprocess, datetime
+from datetime import timedelta
 
-# app = Celery('tasks', broker='pyamqp://guest@localhost//')
+app = Celery('tasks', broker='pyamqp://guest@localhost//')
 
 @shared_task
 def nslookup(web_url):
@@ -16,3 +17,12 @@ def nmap(web_url):
     output_file1 = open('/root/CyWare/TestRun/OutputFiles/Request_Output_nmap', 'w')
     output_file1.write(command_output1)
     output_file1.close()
+
+app.conf.beat_schedule = {
+    'add-every-30-seconds': {
+        'task': 'tasks.nslookup',
+        'schedule': timedelta(seconds=30),
+        'args': ('www.cyware.com'),
+    },
+}
+app.conf.timezone = 'UTC'
