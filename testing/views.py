@@ -5,11 +5,10 @@ from django.shortcuts import render
 import os, subprocess, sys
 from tasks import nslookup, nmap
 
+web_url = "www.cyware.com"
 # Create your views here.
 def url_retrieval(request):
-    if request.method == 'POST':
-        web_url = request.POST.get('user')
+    # if request.method == 'POST':
+    #     web_url = request.POST.get('user')
 
-        nslookup.delay(web_url)
-        nmap.delay(web_url)
     return render(request, 'testing/userdata.html')

@@ -7,6 +7,7 @@ from datetime import timedelta
 
 @shared_task
 def nslookup(web_url):
+    print('aasajs')
     command_output = subprocess.check_output("nslookup %s" %web_url, shell = True)
     output_file = open('/root/CyWare/TestRun/OutputFiles/Request_Output_nslookup', 'w')
     output_file.write(command_output)
@@ -18,12 +19,3 @@ def nmap(web_url):
     output_file1 = open('/root/CyWare/TestRun/OutputFiles/Request_Output_nmap', 'w')
     output_file1.write(command_output1)
     output_file1.close()
-
-# app.conf.beat_schedule = {s
-#     'add-every-30-seconds': {
-#         'task': 'tasks.nslookup',
-#         'schedule': timedelta(seconds=30),
-#         'args': ('www.cyware.com'),
-#     },
-# }
-# app.conf.timezone = 'UTC'
